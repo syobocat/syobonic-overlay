@@ -21,14 +21,13 @@ if [[ -n ${MOZ_ESR} ]] ; then
 	MOZ_PV="${MOZ_PV}esr"
 fi
 
+FLOORP_PN="${PN%-bin}"
 MOZ_PN="firefox"
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
 inherit desktop linux-info optfeature pax-utils xdg
-
-MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 
 SRC_URI="amd64? ( https://github.com/Floorp-Projects/Floorp/releases/download/v${PV}/floorp-${PV}.en-US.linux-x86_64.tar.bz2 )
 	xarm64? ( https://github.com/Floorp-Projects/Floorp/releases/download/v${PV}/floorp-${PV}.en-US.linux-aarch64.tar.bz2 )"
@@ -86,7 +85,7 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
 "
 
-QA_PREBUILT="opt/${PN}/*"
+QA_PREBUILT="opt/${FLOORP_PN}/*"
 
 # Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
@@ -196,7 +195,7 @@ src_unpack() {
 
 src_install() {
 	# Set MOZILLA_FIVE_HOME
-	local MOZILLA_FIVE_HOME="/opt/${PN}"
+	local MOZILLA_FIVE_HOME="/opt/${FLOORP_PN}"
 
 	dodir /opt
 	pushd "${ED}"/opt &>/dev/null || die
@@ -204,8 +203,8 @@ src_install() {
 	popd &>/dev/null || die
 
 	pax-mark m \
-		"${ED}${MOZILLA_FIVE_HOME}"/${PN} \
-		"${ED}${MOZILLA_FIVE_HOME}"/${PN}-bin \
+		"${ED}${MOZILLA_FIVE_HOME}"/${FLOORP_PN} \
+		"${ED}${MOZILLA_FIVE_HOME}"/${FLOORP_PN}-bin \
 		"${ED}${MOZILLA_FIVE_HOME}"/plugin-container
 
 	# Patch alsa support
@@ -257,7 +256,7 @@ src_install() {
 	done
 
 	# Install menu
-	local app_name="Mozilla ${PN^} (bin)"
+	local app_name="Mozilla ${FLOOR_PN^} (bin)"
 	local desktop_file="${FILESDIR}/${PN}-r3.desktop"
 	local desktop_filename="${PN}.desktop"
 	local exec_command="${PN}"
