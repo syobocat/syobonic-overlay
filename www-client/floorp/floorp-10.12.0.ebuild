@@ -186,7 +186,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libICE
 	x11-libs/libSM"
 
-S="${WORKDIR}/${PN}-${PV%_*}"
+S="${WORKDIR}/${PN^}-${PV%_*}"
 
 # Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
