@@ -29,6 +29,8 @@ MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
 inherit desktop linux-info optfeature pax-utils xdg
 
+MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
+
 SRC_URI="amd64? ( https://github.com/Floorp-Projects/Floorp/releases/download/v${PV}/floorp-${PV}.en-US.linux-x86_64.tar.bz2 )
 	xarm64? ( https://github.com/Floorp-Projects/Floorp/releases/download/v${PV}/floorp-${PV}.en-US.linux-aarch64.tar.bz2 )"
 
