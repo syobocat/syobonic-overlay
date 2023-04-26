@@ -86,7 +86,7 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
 "
 
-QA_PREBUILT="opt/${MOZ_PN}/*"
+QA_PREBUILT="opt/${PN}/*"
 
 # Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
@@ -196,7 +196,7 @@ src_unpack() {
 
 src_install() {
 	# Set MOZILLA_FIVE_HOME
-	local MOZILLA_FIVE_HOME="/opt/${MOZ_PN}"
+	local MOZILLA_FIVE_HOME="/opt/${PN}"
 
 	dodir /opt
 	pushd "${ED}"/opt &>/dev/null || die
@@ -204,8 +204,8 @@ src_install() {
 	popd &>/dev/null || die
 
 	pax-mark m \
-		"${ED}${MOZILLA_FIVE_HOME}"/${MOZ_PN} \
-		"${ED}${MOZILLA_FIVE_HOME}"/${MOZ_PN}-bin \
+		"${ED}${MOZILLA_FIVE_HOME}"/${PN} \
+		"${ED}${MOZILLA_FIVE_HOME}"/${PN}-bin \
 		"${ED}${MOZILLA_FIVE_HOME}"/plugin-container
 
 	# Patch alsa support
@@ -222,9 +222,6 @@ src_install() {
 	# Install system-wide preferences
 	local PREFS_DIR="${MOZILLA_FIVE_HOME}/browser/defaults/preferences"
 	insinto "${PREFS_DIR}"
-	newins "${FILESDIR}"/gentoo-default-prefs.js all-gentoo.js
-
-	local GENTOO_PREFS="${ED}${PREFS_DIR}/all-gentoo.js"
 
 	if ! use gmp-autoupdate ; then
 		local plugin
@@ -244,10 +241,8 @@ src_install() {
 
 	# Install icons
 	local icon_srcdir="${ED}/${MOZILLA_FIVE_HOME}/browser/chrome/icons/default"
-	local icon_symbolic_file="${FILESDIR}/firefox-symbolic.svg"
 
 	insinto /usr/share/icons/hicolor/symbolic/apps
-	newins "${icon_symbolic_file}" ${PN}-symbolic.svg
 
 	local icon size
 	for icon in "${icon_srcdir}"/default*.png ; do
@@ -262,7 +257,7 @@ src_install() {
 	done
 
 	# Install menu
-	local app_name="Mozilla ${MOZ_PN^} (bin)"
+	local app_name="Mozilla ${PN^} (bin)"
 	local desktop_file="${FILESDIR}/${PN}-r3.desktop"
 	local desktop_filename="${PN}.desktop"
 	local exec_command="${PN}"
