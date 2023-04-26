@@ -256,7 +256,7 @@ src_install() {
 	done
 
 	# Install menu
-	local app_name="Mozilla ${FLOOR_PN^} (bin)"
+	local app_name="${FLOORP_PN^} (bin)"
 	local desktop_file="${FILESDIR}/${PN}-r3.desktop"
 	local desktop_filename="${PN}.desktop"
 	local exec_command="${PN}"
