@@ -54,8 +54,7 @@ SRC_URI="https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v${PV}.tar.
 DESCRIPTION="Floorp Web Browser"
 HOMEPAGE="https://floorp.ablaze.one/"
 
-#KEYWORDS="amd64 arm64 ~ppc64 x86"
-KEYWORDS="-* ~amd64"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="esr"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
