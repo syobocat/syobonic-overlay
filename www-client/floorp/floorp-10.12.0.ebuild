@@ -1099,7 +1099,6 @@ src_install() {
 
 	# Install icons
 	local icon_srcdir="${S}/browser/branding/official"
-	local icon_symbolic_file="${FILESDIR}/icon/firefox-symbolic.svg"
 
 	insinto /usr/share/icons/hicolor/symbolic/apps
 
