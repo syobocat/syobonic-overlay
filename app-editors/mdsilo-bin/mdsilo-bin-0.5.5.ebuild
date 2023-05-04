@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit xdg-utils
+
 SRC_URI="https://github.com/mdSilo/mdSilo-app/releases/download/app-v${PV}/mdsilo_${PV}_amd64.deb"
 DESCRIPTION="Open platform for Reading, Writing and Collaboration"
 HOMEPAGE="https://mdsilo.com/"
@@ -15,6 +17,7 @@ BDEPEND=""
 
 DEPEND="dev-libs/glib
 	dev-libs/openssl
+	net-libs/webkit-gtk
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+"
@@ -30,4 +33,14 @@ src_unpack() {
 
 src_install() {
 	cp -R "${S}/usr" "${D}" || die
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
