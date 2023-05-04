@@ -11,8 +11,6 @@ KEYWORDS="-* ~amd64"
 LICENSE="AGPL-3.0"
 SLOT="0"
 
-inherit unpacker
-
 BDEPEND=""
 
 DEPEND="dev-libs/glib
@@ -25,13 +23,11 @@ RDEPEND="${DEPEND}
 	x11-themes/hicolor-icon-theme"
 
 src_unpack() {
-	unpack_deb ${A}
-}
-
-src_prepare() {
-	true
+	unpack ${A}
+	mkdir ${S}
+	tar -xf ${WORKDIR}/data.tar.gz -C ${S}
 }
 
 src_install() {
-	cp -R "${WORKDIR}/usr" "${D}" || die
+	cp -R "${S}/usr" "${D}" || die
 }
