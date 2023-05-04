@@ -28,6 +28,10 @@ src_unpack() {
 	unpack_deb ${A}
 }
 
+src_prepare() {
+	true
+}
+
 src_install() {
 	cp -R "${WORKDIR}/usr" "${D}" || die
 }
