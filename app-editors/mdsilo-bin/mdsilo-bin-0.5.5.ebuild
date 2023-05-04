@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 
 src_unpack() {
 	unpack ${A}
-	unpack data.tar.gz
-	rm debian-binary
-	rm control.tar.gz
+	unpack ${WORKDIR}/data.tar.gz
+	rm ${WORKDIR}/debian-binary
+	rm ${WORKDIR}/control.tar.gz
 }
