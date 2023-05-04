@@ -17,7 +17,7 @@ BDEPEND=""
 
 DEPEND="dev-libs/glib
 	dev-libs/openssl
-	net-libs/webkit-gtk
+	net-libs/webkit-gtk:4/37
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+"
