@@ -21,3 +21,10 @@ DEPEND="dev-libs/glib
 
 RDEPEND="${DEPEND}
 	x11-themes/hicolor-icon-theme"
+
+src_unpack() {
+	unpack ${A}
+	unpack data.tar.gz
+	rm debian-binary
+	rm control.tar.gz
+}
