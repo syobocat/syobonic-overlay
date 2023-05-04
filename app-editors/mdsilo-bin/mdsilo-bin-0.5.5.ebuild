@@ -16,7 +16,7 @@ SLOT="0"
 BDEPEND=""
 
 DEPEND="dev-libs/glib
-	>=dev-libs/openssl-3
+	dev-libs/openssl:0/3
 	net-libs/webkit-gtk:4/37
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
