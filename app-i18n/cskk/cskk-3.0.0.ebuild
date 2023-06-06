@@ -231,4 +231,5 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_install() {
 	cargo cinstall --release --prefix="${D}/usr"
+	sed -i "s/${D}//" ${D}/usr/lib/pkgconfig/cskk.pc
 }
