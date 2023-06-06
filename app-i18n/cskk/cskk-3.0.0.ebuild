@@ -221,7 +221,9 @@ KEYWORDS="~amd64"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="dev-util/cargo-c
+		 dev-util/cbindgen
+		 x11-libs/libxkbcommon"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
