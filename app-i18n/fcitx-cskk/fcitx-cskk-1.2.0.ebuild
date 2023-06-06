@@ -15,7 +15,8 @@ SLOT="1"
 
 BDEPEND=""
 
-DEPEND="dev-util/cmake
+DEPEND="app-i18n/cskk
+	dev-util/cmake
 	kde-frameworks/extra-cmake-modules
 	>=app-i18n/fcitx-5
 	dev-qt/qtcore
