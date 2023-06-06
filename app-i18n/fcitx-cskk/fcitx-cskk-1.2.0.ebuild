@@ -29,7 +29,8 @@ src_unpack() {
 src_compile() {
 	mkdir build
 	cd build
-	CMAKE_INSTALL_PREFIX="${D}/usr" cmake ..
+	sed -i "s%/usr%${D}/usr%g" ../CMakeLists.txt
+	cmake ..
 	make
 	make install
 }
