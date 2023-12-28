@@ -230,6 +230,6 @@ BDEPEND="dev-util/cargo-c
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_install() {
-	cargo cinstall --release --prefix="${D}/usr"
-	sed -i "s%${D}%%" ${D}/usr/lib/pkgconfig/cskk.pc
+	cargo cinstall --release --prefix="${D}/usr" --pkgconfigdir="${D}/usr/share/pkgconfig"
+	sed -i "s%${D}%%" ${D}/usr/share/pkgconfig/cskk.pc
 }

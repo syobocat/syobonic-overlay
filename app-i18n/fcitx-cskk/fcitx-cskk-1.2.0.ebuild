@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit cmake
+
 MY_PN="fcitx5-cskk"
 
 SRC_URI="https://github.com/fcitx/fcitx5-cskk/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -13,25 +15,17 @@ KEYWORDS="~amd64"
 LICENSE="GPL-3.0"
 SLOT="1"
 
-BDEPEND=""
+BDEPEND="virtual/pkgconfig"
 
-DEPEND="app-i18n/cskk
-	dev-util/cmake
+DEPEND="
+	app-i18n/cskk
 	kde-frameworks/extra-cmake-modules
 	>=app-i18n/fcitx-5
 	dev-qt/qtcore
-	dev-qt/qtdeclarative"
+	dev-qt/qtdeclarative
+"
 
 src_unpack() {
 	unpack ${A}
 	mv ${WORKDIR}/${MY_PN}-${PV} ${WORKDIR}/${P}
-}
-
-src_compile() {
-	mkdir build
-	cd build
-	sed -i "s%/usr%${D}/usr%g" ../CMakeLists.txt
-	cmake ..
-	make
-	make install
 }
